@@ -22,6 +22,11 @@ namespace HangmanGame
            return this.HangManGame.CheckGuess(guess);
        }
        
+       public void ShowProgress()
+       {
+           Console.WriteLine("Left to solve: {0}", this.HangManGame.CurrentProgress());
+       }
+       
        //CONSTRUCTORS
        public Prompter(Game game)
        {

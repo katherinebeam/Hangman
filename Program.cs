@@ -25,6 +25,9 @@ namespace HangmanGame
             {
                 Console.WriteLine("Whoops! You missed.");
             }
+            
+            //show user which letters in the answer have/haven't been guessed yet
+            prompter.ShowProgress();
         }
     }
 }

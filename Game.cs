@@ -28,6 +28,22 @@ namespace HangmanGame
             return charIsInAnser;
         }
         
+        //checks how many correct/incorrect guesses the user has made
+        public string CurrentProgress()
+        {
+            string progress = "";
+            foreach(char letter in this.Answer.ToCharArray())
+            {
+                char display = '-';
+                if(this.CorrectGuesses.IndexOf(letter) >= 0)
+                {
+                    display = letter;
+                }
+                progress += display;
+            }
+            return progress;
+        }
+        
         //CONSTRUCTOR
         //ensure an answer/guess is passed in by the user when a new game is started
         public Game(string answer)
