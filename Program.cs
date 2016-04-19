@@ -9,12 +9,22 @@ namespace HangmanGame
     {
         public static void Main(string[] args)
         {
-            //instantiate new object of type Game
+            //instantiate new Game object
             Game game = new Game("spaceship");
-            //prompt user for their letter guess
-            System.Console.WriteLine("Guess a letter:");
-            //tell user whether or not the letter they guesses is in the answer
-            System.Console.WriteLine(game.CheckGuess(Convert.ToChar(Console.ReadLine())));
+            
+            //instantiate new Prompter object
+            Prompter prompter = new Prompter(game);
+           
+            //prompt user for guess and tell user whether or not the letter they guessed is in the answer
+            bool GoodGuess = prompter.PromptForGuess();
+            if(GoodGuess)
+            {
+                Console.WriteLine("We got a hit!");
+            }
+            else
+            {
+                Console.WriteLine("Whoops! You missed.");
+            }
         }
     }
 }
