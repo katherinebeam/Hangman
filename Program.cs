@@ -15,19 +15,7 @@ namespace HangmanGame
             //instantiate new Prompter object
             Prompter prompter = new Prompter(game);
            
-            //prompt user for guess and tell user whether or not the letter they guessed is in the answer
-            bool GoodGuess = prompter.PromptForGuess();
-            if(GoodGuess)
-            {
-                Console.WriteLine("We got a hit!");
-            }
-            else
-            {
-                Console.WriteLine("Whoops! You missed.");
-            }
-            
-            //show user which letters in the answer have/haven't been guessed yet
-            prompter.ShowProgress();
+            prompter.Play();
         }
     }
 }

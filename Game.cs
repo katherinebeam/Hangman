@@ -7,8 +7,10 @@ namespace HangmanGame
 {
     class Game
     {
-        //Properties
-        public string Answer { get; }
+        //PROPERTIES
+        //setting constant for most wrong guesses allowed in a game to 7
+        public const int MAX_MISSES = 7;
+        private string Answer { get; set; }
         public string CorrectGuesses { get; set; }
         public string WrongGuesses { get; set; }
         
@@ -42,6 +44,11 @@ namespace HangmanGame
                 progress += display;
             }
             return progress;
+        }
+        
+        public int GetRemainingTries()
+        {
+            return MAX_MISSES - WrongGuesses.Length;
         }
         
         //CONSTRUCTOR

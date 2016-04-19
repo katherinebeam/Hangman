@@ -1,7 +1,7 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+// using System.Collections.Generic;
+// using System.Linq;
+// using System.Threading.Tasks;
 
 
 namespace HangmanGame
@@ -12,6 +12,15 @@ namespace HangmanGame
        public Game HangManGame { get; set; }
        
        //METHODS
+       //loop through game play and show progress after each guess whileuser still has tries remaining
+       public void Play()
+       {
+           while(HangManGame.GetRemainingTries() > 0)
+           {
+               ShowProgress();
+               PromptForGuess();
+           }
+       }
        
        //Prompt user for guess, then check if answer contaisn their guessed character
        public bool PromptForGuess()
@@ -24,7 +33,7 @@ namespace HangmanGame
        
        public void ShowProgress()
        {
-           Console.WriteLine("Left to solve: {0}", this.HangManGame.CurrentProgress());
+           Console.WriteLine("You have {0} tries left to solve: {1}", HangManGame.GetRemainingTries(), this.HangManGame.CurrentProgress());
        }
        
        //CONSTRUCTORS
