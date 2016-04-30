@@ -75,6 +75,16 @@ namespace HangmanGame
             return letter;
         }
         
+        public bool IsSolved()
+        {
+            return CurrentProgress().IndexOf('-') == -1;
+        }
+        
+        public string GetAnswer()
+        {
+            return this.Answer;
+        }
+        
         //CONSTRUCTOR
         //ensure an answer/guess is passed in by the user when a new game is started
         public Game(string answer)

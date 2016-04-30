@@ -15,10 +15,18 @@ namespace HangmanGame
        //loop through game play and show progress after each guess while user still has tries remaining
        public void Play()
        {
-           while(HangManGame.GetRemainingTries() > 0)
+           while(HangManGame.GetRemainingTries() > 0 && !HangManGame.IsSolved())
            {
                ShowProgress();
                PromptForGuess();
+           }
+           if(HangManGame.IsSolved())
+           {
+               Console.WriteLine("Congratulations! You won with {0} tries remaining.", HangManGame.GetRemainingTries());
+           }
+           else
+           {
+               Console.WriteLine("Whoops! You lose! The word was '{0}'. :(", HangManGame.GetAnswer());
            }
        }
        
