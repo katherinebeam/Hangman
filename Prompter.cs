@@ -12,7 +12,7 @@ namespace HangmanGame
        public Game HangManGame { get; set; }
        
        //METHODS
-       //loop through game play and show progress after each guess whileuser still has tries remaining
+       //loop through game play and show progress after each guess while user still has tries remaining
        public void Play()
        {
            while(HangManGame.GetRemainingTries() > 0)
@@ -22,13 +22,28 @@ namespace HangmanGame
            }
        }
        
-       //Prompt user for guess, then check if answer contaisn their guessed character
+       //Prompt user for guess, then check if answer contains their guessed letter
        public bool PromptForGuess()
        {
-           Console.WriteLine("Enter a letter:");
-           string guessAsLetter = Console.ReadLine();
-           char guess = Convert.ToChar(guessAsLetter[0]);
-           return this.HangManGame.CheckGuess(guess);
+           bool isHit = false;
+           bool isValidGuess = false;
+           
+           while(!isValidGuess)
+           {
+                Console.WriteLine("Enter a letter:");
+                string guessAsString = Console.ReadLine();
+                char guess = Convert.ToChar(guessAsString[0]);
+                try 
+                {
+                    isHit = this.HangManGame.CheckGuess(guess);
+                    isValidGuess = true;
+                }
+                catch(ArgumentException ae)
+                {
+                    Console.WriteLine("{0} Please try again.", ae.Message);
+                }
+           }
+           return isHit;
        }
        
        public void ShowProgress()

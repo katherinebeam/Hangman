@@ -18,8 +18,9 @@ namespace HangmanGame
         //check whether user's guess is in answer or not
         public bool CheckGuess(char letter)
         {
-            bool charIsInAnser = this.Answer.IndexOf(letter) >= 0;
-            if(charIsInAnser)
+            letter = ValidateGuess(letter);
+            bool charIsInAnswer = this.Answer.IndexOf(letter) >= 0;
+            if(charIsInAnswer)
             {
                 this.CorrectGuesses += letter;
             }
@@ -27,7 +28,7 @@ namespace HangmanGame
             {
                 this.WrongGuesses += letter;
             }
-            return charIsInAnser;
+            return charIsInAnswer;
         }
         
         //checks how many correct/incorrect guesses the user has made
@@ -49,6 +50,20 @@ namespace HangmanGame
         public int GetRemainingTries()
         {
             return MAX_MISSES - WrongGuesses.Length;
+        }
+        
+        private char ValidateGuess(char letter) 
+        {
+            if(!Char.IsLetter(letter))
+            {
+                throw new ArgumentException("A letter is required.");
+            }            
+            letter = Char.ToLower(letter);
+            if(WrongGuesses.IndexOf(letter) >= 0 || CorrectGuesses.IndexOf(letter) >= 0) 
+            {
+                throw new ArgumentException("{0} has already been guessed.", letter.ToString());
+            }
+            return letter;
         }
         
         //CONSTRUCTOR
