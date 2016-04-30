@@ -32,10 +32,9 @@ namespace HangmanGame
            {
                 Console.WriteLine("Enter a letter:");
                 string guessAsString = Console.ReadLine();
-                char guess = Convert.ToChar(guessAsString[0]);
                 try 
                 {
-                    isHit = this.HangManGame.CheckGuess(guess);
+                    isHit = this.HangManGame.CheckGuess(guessAsString);
                     isValidGuess = true;
                 }
                 catch(ArgumentException ae)

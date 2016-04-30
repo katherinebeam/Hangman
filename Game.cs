@@ -31,6 +31,15 @@ namespace HangmanGame
             return charIsInAnswer;
         }
         
+        public bool CheckGuess(string letters) 
+        {
+            if(letters.Length == 0)
+            {
+                throw new ArgumentException("No letter found");
+            }
+            return CheckGuess(letters[0]);
+        }
+        
         //checks how many correct/incorrect guesses the user has made
         public string CurrentProgress()
         {
